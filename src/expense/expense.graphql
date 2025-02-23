@@ -1,0 +1,47 @@
+enum ExpenseType {
+  PURCHASE,
+  SUBSCRIPTION,
+  WITHDRAW
+}
+
+type Expense {
+  id: Int!
+  name: String
+  type: ExpenseType
+  quantity: Int
+  price: Int
+  description: String
+  metadata: [ExpenseMetadata!]
+}
+
+type ExpenseMetadata {
+  origin: String
+  tags: [String!]
+  currency: String
+  alias: String
+  category: String
+}
+
+input CreateExpenseInput {
+  name: String
+  type: ExpenseType
+  quantity: Int
+  price: Int
+  description: String
+  metadata: [ExpenseMetadata!]
+}
+
+input UpdateExpenseInput {
+  id: Int!
+}
+
+type Query {
+  expense: [Expense]!
+  expense(id: Int!): Expense
+}
+
+type Mutation {
+  createExpense(createExpenseInput: CreateExpenseInput!): Expense!
+  updateExpense(updateExpenseInput: UpdateExpenseInput!): Expense!
+  removeExpense(id: Int!): Expense
+}
