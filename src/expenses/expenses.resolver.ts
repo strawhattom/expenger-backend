@@ -1,5 +1,5 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { ExpenseService } from './expense.service';
+import { ExpenseService } from './expenses.service';
 import { CreateExpenseInput } from './dto/create-expense.input';
 import { UpdateExpenseInput } from './dto/update-expense.input';
 
@@ -18,13 +18,13 @@ export class ExpenseResolver {
   }
 
   @Query('expense')
-  findOne(@Args('id') id: number) {
+  findOne(@Args('id') id: string) {
     return this.expenseService.findOne(id);
   }
 
   @Mutation('updateExpense')
   update(@Args('updateExpenseInput') updateExpenseInput: UpdateExpenseInput) {
-    return this.expenseService.update(updateExpenseInput.id, updateExpenseInput);
+    return this.expenseService.update(updateExpenseInput);
   }
 
   @Mutation('removeExpense')

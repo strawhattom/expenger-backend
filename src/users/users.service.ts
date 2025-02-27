@@ -69,10 +69,23 @@ export class UsersService {
     return await this.userModel.findOne({username}).exec();
   }
 
+  /**
+   * Update one user
+   * 
+   * @param id User id
+   * @param updateUserInput UserUpdateDTO
+   * @returns updated user
+   */
   async update(id: number, updateUserInput: UpdateUserInput) {
     return await this.userModel.findOneAndUpdate({_id: id}, updateUserInput);
   }
 
+  /**
+   * Delete one user
+   * 
+   * @param id User id
+   * @returns deleted user
+   */
   async remove(id: number): Promise<DeleteResult | null> {
     return await this.userModel.deleteOne({_id: id});
   }

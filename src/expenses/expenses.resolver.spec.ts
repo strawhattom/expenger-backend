@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExpenseResolver } from './expense.resolver';
-import { ExpenseService } from './expense.service';
+import { ExpenseResolver } from './expenses.resolver';
+import { ExpenseService } from './expenses.service';
 
 describe('ExpenseResolver', () => {
   let resolver: ExpenseResolver;

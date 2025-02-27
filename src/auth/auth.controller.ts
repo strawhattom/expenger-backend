@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { LoginUserInput } from './dto/login-user.input';
 import { AuthService } from './auth.service';
-import { UserJwtPayload } from './interfaces/jwt';
+import { ExpengerRequest  } from '../interfaces/jwt';
 import { AuthGuard } from './auth.guard';
 
 @Controller('auth')
@@ -16,7 +16,7 @@ export class AuthController {
 
     @UseGuards(AuthGuard)
     @Get('profile')
-    getProfile(@Req() request: (Request & { user: UserJwtPayload })) {
+    getProfile(@Req() request: ExpengerRequest) {
         return request.user;
     }
 }

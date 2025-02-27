@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose"
 import { ExpenseType, ExpenseMetadata } from "../entities/expense.entity"
 /**
  * Describe an expense's input
@@ -6,7 +7,7 @@ export class CreateExpenseInput {
     /**
      * User id
      */
-    user: number
+    user?: string | ObjectId
     /**
      * Expense name
      */
@@ -14,7 +15,7 @@ export class CreateExpenseInput {
     /**
      * Expense type
      */
-    type: ExpenseType
+    type?: ExpenseType
     /**
      * Quantity (default 1)
      */
@@ -27,5 +28,14 @@ export class CreateExpenseInput {
      * Description
      */
     description?: string
-    metadata?: ExpenseMetadata[]
+
+    /**
+     * Date
+     */
+    createdAt?: Date
+
+    /**
+     * Metadata
+     */
+    metadata?: ExpenseMetadata
 }

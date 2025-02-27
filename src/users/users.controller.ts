@@ -1,7 +1,9 @@
-import {  Body, Controller, Get, Param, Post } from "@nestjs/common";
+import {  Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserInput } from "./dto/create-user.input";
-import { UserDocument } from "./entities/user.entity";
+import { UserDocument, UserRole } from "./entities/user.entity";
+import { Roles, RolesGuard } from "src/auth/role.guard";
+import { AuthGuard } from "src/auth/auth.guard";
 
 @Controller("users")
 export class UsersController {
@@ -14,6 +16,8 @@ export class UsersController {
     }
 
     @Get()
+    @Roles(UserRole.ADMINISTRATOR)
+    @UseGuards(AuthGuard, RolesGuard)
     async findAll(): Promise<UserDocument[]> {
         return await this.usersService.findAll();
     }

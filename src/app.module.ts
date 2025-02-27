@@ -12,7 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
-import { ExpenseModule } from './expense/expense.module';
+import { ExpenseModule } from './expenses/expenses.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
