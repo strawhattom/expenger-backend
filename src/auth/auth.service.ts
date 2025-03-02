@@ -33,7 +33,7 @@ export class AuthService {
 
     // Passwords do not match
     if (!match) {
-      throw new UnauthorizedException("Unauthorize: wrong credentials");
+      throw new UnauthorizedException("Wrong username or password");
     }
     const payload = { sub: user.id, username: user.username, role: user.role };
     return {
