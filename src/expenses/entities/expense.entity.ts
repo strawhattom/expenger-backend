@@ -6,6 +6,7 @@ import { ObjectId, HydratedDocument } from "mongoose"
  */
 export enum ExpenseType {
     PURCHASE = "purchase",
+    INVESTMENT = "investment",
     SUBSCRIPTION = "subscription",
     WITHDRAW = "withdraw"
 }

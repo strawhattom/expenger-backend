@@ -23,6 +23,10 @@ export class ExpenseController {
     @UseGuards(AuthGuard)
     async findOne(@Param("id") id: string, @Req() request: ExpengerRequest) {
 
+        if (id === "self") {
+            return await this.findExpenseOfUser(request)
+        }
+
         if (!request.user) {
             throw new BadRequestException();
         }
